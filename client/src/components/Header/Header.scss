@@ -1,0 +1,14 @@
+@use "../../App.scss";
+
+header {
+    display: flex;
+    align-items: center;
+    background-color: App.$primary-color;
+    border-bottom: 10px white;
+    height: 10dvh;
+    width: 100dvw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: App.$text-color;
+}

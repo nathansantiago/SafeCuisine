@@ -1,0 +1,13 @@
+@use "../../App.scss";
+
+footer {
+    display: flex;
+    align-items: center;
+    height: 10dvh;
+    width: 100dvw;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: App.$primary-color;
+    color: App.$text-color;
+}
