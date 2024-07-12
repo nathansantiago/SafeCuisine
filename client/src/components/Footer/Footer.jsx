@@ -4,7 +4,9 @@ export default function Footer () {
     return (
         <>
             <footer>
-                this is the bottom nav
+                <h2>
+                    this is the bottom nav
+                </h2>
             </footer>
         </>
     );

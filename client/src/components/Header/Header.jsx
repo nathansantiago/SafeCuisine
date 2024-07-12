@@ -4,7 +4,9 @@ export default function Header () {
     return (
         <>
             <header>
-                SafeCuisine
+                <h2>
+                    SafeCuisine
+                </h2>
             </header>
         </>
     );

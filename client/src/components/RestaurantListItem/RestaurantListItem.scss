@@ -1,0 +1,6 @@
+@use "../../App.scss";
+
+.restauraunt-container {
+    background-color: App.$accent-color;
+    height: 10rem;
+}

@@ -1,11 +1,10 @@
+import RestaurauntListItem from "../../components/RestaurantListItem/RestaurantListItem";
 import "./IndexPage.scss"
 
 export default function IndexPage () {
     return (
-        <>
-            <p>
-                This is the index page.
-            </p>
-        </>
+        <div className="index-container">
+            <RestaurauntListItem/>
+        </div>
     );
 }
