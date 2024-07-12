@@ -4,7 +4,7 @@ header {
     display: flex;
     align-items: center;
     background-color: App.$primary-color;
-    border-bottom: 10px white;
+    border-bottom: .1rem solid App.$text-color;
     height: 10dvh;
     width: 100dvw;
     position: absolute;
