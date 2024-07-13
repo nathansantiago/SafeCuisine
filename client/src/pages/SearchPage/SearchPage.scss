@@ -1,0 +1,28 @@
+@use "../../App.scss";
+
+#search-page {
+    margin: 10dvh 0;
+    height: 80dvh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    #search-container {
+        padding: 3rem;
+        width: 50dvw;
+        background-color: App.$secondary-color;
+        color: App.$text-color;
+    
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: .3rem;
+    
+            input {
+                background-color: App.$accent-color;
+                border: 0;
+            }
+        }
+    }
+}
