@@ -3,6 +3,7 @@ import './App.scss'
 import Layout from './components/Layout'
 import IndexPage from './pages/IndexPage/IndexPage'
 import SearchPage from './pages/SearchPage/SearchPage'
+import RestaurantPage from './pages/RestaurantPage/RestaurantPage'
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route path={'/'} element={<Layout/>}>
           <Route index element={<IndexPage/>}/>
           <Route path={'search'} element={<SearchPage/>}/>
+          <Route path={'restaurant/:id'} element={<RestaurantPage/>}/>
         </Route>
       </Routes>
     </>
