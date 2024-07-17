@@ -12,7 +12,12 @@ header {
     left: 0;
     color: App.$text-color;
 
-    h2 {
-        padding: 0 1rem;
+    a {
+        text-decoration: none;
+        color: App.$text-color;
+
+        h2 {
+            padding: 0 1rem;
+        }
     }
 }

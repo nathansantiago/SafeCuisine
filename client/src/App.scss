@@ -13,3 +13,8 @@ body {
     margin: 0;
     font-size: calc(15px + 0.390625dvw);
 }
+
+a {
+    text-decoration: none;
+    color: $text-color;
+}
