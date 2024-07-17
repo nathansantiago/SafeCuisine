@@ -3,6 +3,7 @@
 footer {
     display: flex;
     align-items: center;
+    justify-content: space-around;
     height: 10dvh;
     width: 100dvw;
     position: fixed;
@@ -11,4 +12,12 @@ footer {
     background-color: App.$primary-color;
     color: App.$text-color;
     border-top: .1rem solid App.$text-color;
+
+    svg {
+        height: 100%;
+    }
+
+    a {
+        height: 100%;
+    }
 }
