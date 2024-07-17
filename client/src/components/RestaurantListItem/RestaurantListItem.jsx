@@ -1,3 +1,4 @@
+import RatingsNumber from "../RatingsNumber/RatingsNumber";
 import "./RestaurantListItem.scss"
 
 export default function RestaurauntListItem () {
@@ -11,10 +12,7 @@ export default function RestaurauntListItem () {
                 </h3>
                 <h3>1.32 miles</h3>
             </div>
-            <div className="rest-ratings-container">
-                <h1>5.0</h1>
-                <h4>15 Ratings</h4>
-            </div>
+            <RatingsNumber/>
         </div>
         <div className="restauraunt-container">
             <div className="rest-info-container">
@@ -24,10 +22,7 @@ export default function RestaurauntListItem () {
                 </h3>
                 <h3>0.88 miles</h3>
             </div>
-            <div className="rest-ratings-container">
-                <h1>4.4</h1>
-                <h4>10 Ratings</h4>
-            </div>
+            <RatingsNumber/>
         </div>
         </>
     );
