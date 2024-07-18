@@ -1,3 +1,4 @@
+import { ArrowRightMagnifyingGlassIcon } from "../../components/Icons";
 import "./SearchPage.scss"
 
 export default function SearchPage () {
@@ -11,6 +12,9 @@ export default function SearchPage () {
                     <input type="text" name="" id="" />
                     <label htmlFor="">Allergens:</label>
                     <input type="text" />
+                    <button>
+                        <ArrowRightMagnifyingGlassIcon/>
+                    </button>
                 </form>
             </div>
         </div>
