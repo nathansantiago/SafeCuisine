@@ -9,7 +9,9 @@
     justify-content: center;
 
     #search-container {
-        padding: 3rem;
+        padding: 0 3rem;
+        padding-top: 3em;
+        padding-bottom: 1.5em;
         width: 50dvw;
         background-color: App.$secondary-color;
         color: App.$text-color;
@@ -22,6 +24,18 @@
             input {
                 background-color: App.$accent-color;
                 border: 0;
+            }
+
+            button {
+                background: none;
+                border: none;
+                align-self: flex-end;
+                padding-top: 1.5em;
+                color: App.$text-color;
+
+                svg {
+                    height: 3em;
+                }
             }
         }
     }
