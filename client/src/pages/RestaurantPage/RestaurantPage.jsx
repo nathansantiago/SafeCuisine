@@ -4,17 +4,38 @@ import RestaurantReviewItem from "../../components/RestaurantReviewItem/Restaura
 import { HeartIcon } from '@heroicons/react/24/outline';
 import { PhoneIcon, BookOpenIcon } from '@heroicons/react/24/solid';
 import "./RestaurantPage.scss"
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function RestaurantPage () {
+    // Grabs restaurant id from url
+    const {id} = useParams();
+    // Stores the restaurant data from database
+    const [restaurant, setRestaurant] = useState(null);
+
+    // Runs each time the page id changes
+    useEffect(() => {
+        if (!id) {
+            return;
+        }
+        // Calls api and updates the page data.
+        axios.get(`/restaurants/${id}`).then(response => {
+            setRestaurant(response.data);
+        });
+    }, [id]);
+
+    if (!restaurant) return '';
+
     return (
         <div id='restaurant-page'>
             <div id='restaurant-info'>
                 <div id='rest-header'>
-                    <h1>Venable Rotisserie Bistro</h1>
+                    <h1>{restaurant.name}</h1>
                     {/* heart goes here */}
                     <HeartIcon id="heart-icon"/>
                 </div>
-                <h3>200 N Greensboro St A-18, Carrboro, NC 27510</h3>
+                <h3>{restaurant.address.building} {restaurant.address.street}, {restaurant.address.town}, {restaurant.address.state} {restaurant.address.zipcode}</h3>
                 <div id="ratings-cont">
                     <RatingsStars/>
                     <RatingsNumber/>
@@ -22,7 +43,7 @@ export default function RestaurantPage () {
                 <div id="phone-menu-cont">
                     <div id="phone-cont">
                         <PhoneIcon/>
-                        <p id="phone-num">(919) 904-7160</p>
+                        <p id="phone-num">({restaurant.phone.slice(0,3)}) {restaurant.phone.slice(3,6)}-{restaurant.phone.slice(6,10)}</p>
                     </div>
                     <div id="menu-cont">
                         <BookOpenIcon/>

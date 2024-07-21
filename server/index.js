@@ -1,11 +1,16 @@
 const express = require('express');
 const { default: mongoose } = require('mongoose');
 require('dotenv').config();
+const cors = require('cors');
 
 const Restaurant = require('./Models/Restaurant.js');
 
 const app = express();
 const PORT = 3000;
+
+app.use(cors({
+    origin: 'http://localhost:5173',
+}));
 
 mongoose.connect(process.env.ATLAS_URI);
 
@@ -15,7 +20,13 @@ app.get('/', (req, res)=>{
     res.send("Welcome to root URL of Server");
 });
 
-// Gets restaurant data
+// Get single restaurant data
+app.get('/restaurants/:id', async (req, res) => {
+    const {id} = req.params; // Grabs obj id
+    res.json(await Restaurant.findById(id));
+});
+
+// Gets all restaurants data
 app.get('/restaurants', async (req,res) => {
     res.json( await Restaurant.find() );
 })

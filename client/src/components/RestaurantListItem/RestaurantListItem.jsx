@@ -5,7 +5,7 @@ import "./RestaurantListItem.scss"
 export default function RestaurauntListItem () {
     return (
         <>
-            <Link to={"/restaurant/venableRotisserieBistro"}>
+            <Link to={"/restaurant/669c71ea6a78518e9f6c1de5"}>
                 <div className="restauraunt-container">
                     <div className="rest-info-container">
                         <h1>Venable Rotisserie Bistro</h1>
