@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
-const { Schema } = mongoose;
+// const { Schema } = mongoose;
 
 // Template for handling restaraunts in the database
 
-const RestaurantSchema = new Schema ({
+const RestaurantSchema = new mongoose.Schema ({
     address: {
         building: String,
         street: String,
