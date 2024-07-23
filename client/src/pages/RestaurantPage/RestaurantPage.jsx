@@ -13,6 +13,7 @@ export default function RestaurantPage () {
     const {id} = useParams();
     // Stores the restaurant data from database
     const [restaurant, setRestaurant] = useState(null);
+    const [reviews, setReviews] = useState(null);
 
     // Runs each time the page id changes
     useEffect(() => {
@@ -22,6 +23,10 @@ export default function RestaurantPage () {
         // Calls api and updates the page data.
         axios.get(`/restaurants/${id}`).then(response => {
             setRestaurant(response.data);
+        });
+        // Calls api to get reviews and updates page
+        axios.get(`/restaurants/reviews/${id}`).then(response => {
+            setReviews(response.data);
         });
     }, [id]);
 
@@ -41,18 +46,20 @@ export default function RestaurantPage () {
                     <RatingsNumber/>
                 </div>
                 <div id="phone-menu-cont">
-                    <div id="phone-cont">
+                    <a href={"tel:+1"+restaurant.phone} id="phone-cont">
                         <PhoneIcon/>
                         <p id="phone-num">({restaurant.phone.slice(0,3)}) {restaurant.phone.slice(3,6)}-{restaurant.phone.slice(6,10)}</p>
-                    </div>
-                    <div id="menu-cont">
+                    </a>
+                    <a href={restaurant.menu} id="menu-cont">
                         <BookOpenIcon/>
                         <p>View Menu</p>
-                    </div>
+                    </a>
                 </div>
             </div>
             <div id='rest-reviews-cont'>
-                <RestaurantReviewItem/>
+                {reviews && reviews.length > 0 && reviews.map((review, index) => (
+                    <RestaurantReviewItem reviewData={review} key={index} />
+                ))}
             </div>
         </div>
     );

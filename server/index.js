@@ -4,6 +4,7 @@ require('dotenv').config();
 const cors = require('cors');
 
 const Restaurant = require('./Models/Restaurant.js');
+const Review = require('./Models/Review.js');
 
 const app = express();
 const PORT = 3000;
@@ -30,6 +31,12 @@ app.get('/restaurants/:id', async (req, res) => {
 app.get('/restaurants', async (req,res) => {
     res.json( await Restaurant.find() );
 })
+
+// Gets all reviews for restaurant
+app.get('/restaurants/reviews/:id', async (req, res) => {
+    const {id} = req.params;
+    res.json(await Review.find( {restaurant_id: id} ));
+});
 
 // Specifies what port the api should be listening on.
 app.listen(PORT, (error) => {
