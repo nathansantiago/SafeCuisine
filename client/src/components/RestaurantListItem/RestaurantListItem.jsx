@@ -19,7 +19,7 @@ export default function RestaurauntListItem ({ restaurantData, locationData }) {
                                     locationData.latitude, locationData.longitude
                                 ) * 100) / 100} miles</h3>
                     </div>
-                    <RatingsNumber/>
+                    <RatingsNumber rating={restaurantData.rating} numberOfRatings={restaurantData.numberOfRatings}/>
                 </div>
             </Link>
         </>

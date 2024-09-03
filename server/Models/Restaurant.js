@@ -15,6 +15,8 @@ const RestaurantSchema = new mongoose.Schema ({
     menu: String,
     name: String,
     phone: String,
+    rating: Number,
+    numberOfRatings: Number,
 });
 
 const RestaurantModel = mongoose.model('Restaurant', RestaurantSchema);

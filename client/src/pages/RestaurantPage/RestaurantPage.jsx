@@ -42,8 +42,8 @@ export default function RestaurantPage () {
                 </div>
                 <h3>{restaurant.address.building} {restaurant.address.street}, {restaurant.address.town}, {restaurant.address.state} {restaurant.address.zipcode}</h3>
                 <div id="ratings-cont">
-                    <RatingsStars rating={5}/>
-                    <RatingsNumber/>
+                    <RatingsStars rating={restaurant.rating}/>
+                    <RatingsNumber rating={restaurant.rating} numberOfRatings={restaurant.numberOfRatings}/>
                 </div>
                 <div id="phone-menu-cont">
                     <a href={"tel:+1"+restaurant.phone} id="phone-cont">
