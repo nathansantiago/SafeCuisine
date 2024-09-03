@@ -3,23 +3,29 @@ import { ArrowRightMagnifyingGlassIcon } from "../../components/Icons";
 import "./SearchPage.scss"
 
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 
 export default function SearchPage () {
     const[redirect, setRedirect] = useState(false);
     const[location, setLocation] = useState(null);
     const[distance, setDistance] = useState(0);
-    const[allergens, setAllergens] = useState([])
+    const[allergens, setAllergens] = useState([]);
+    const [results, setResults] = useState([]);
 
     async function searchFormSubmit (ev, location, distance, allergens) {
         ev.preventDefault();
         
         try {
-            const restaraunts = await axios.post('/search', {location, distance, allergens});
+            const restaraunts = await axios.get('/search', {location, distance, allergens});
             setRedirect(true);
         }
         catch (e) {
             alert('search failed.');
         }
+    }
+
+    if (redirect) {
+        return <Navigate to={'/'} state={{ results }}/>
     }
 
     return (

@@ -32,6 +32,14 @@ app.get('/restaurants', async (req,res) => {
     res.json( await Restaurant.find() );
 })
 
+// Gets search results
+app.get('/search', async (req, res) => {
+    // Gets entered form data
+    const { location, distance, allergens } = req.body;
+    // find restaraunt by town
+    res.json(await Restaurant.find( {town: location} ));
+})
+
 // Gets all reviews for restaurant
 app.get('/restaurants/reviews/:id', async (req, res) => {
     const {id} = req.params;

@@ -42,7 +42,7 @@ export default function RestaurantPage () {
                 </div>
                 <h3>{restaurant.address.building} {restaurant.address.street}, {restaurant.address.town}, {restaurant.address.state} {restaurant.address.zipcode}</h3>
                 <div id="ratings-cont">
-                    <RatingsStars/>
+                    <RatingsStars rating={5}/>
                     <RatingsNumber/>
                 </div>
                 <div id="phone-menu-cont">

@@ -2,16 +2,23 @@ import { useEffect, useState } from "react";
 import RestaurauntListItem from "../../components/RestaurantListItem/RestaurantListItem";
 import "./IndexPage.scss"
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 export default function IndexPage () {
     const[restaurants, setRestaurants] = useState([]);
     // const variable array to save the users location
     const [userLocation, setUserLocation] = useState(null);
+    // Gets search results if redirected from search screen.
+    const { results } = useLocation();
 
     useEffect (() => {
-        axios.get('/restaurants').then(response => {
-            setRestaurants(response.data);
-        });
+        if (results) {
+            console.log(results);
+        } else {
+            axios.get('/restaurants').then(response => {
+                setRestaurants(response.data);
+            });
+        }
 
         // if geolocation is supported by the users browser
         if (navigator.geolocation) {
