@@ -1,3 +1,7 @@
+/**
+ * Meant to run once a day on the server.
+ */
+
 require('dotenv').config( {path: 'server/.env' } ); // Gets env variables
 const { MongoClient } = require('mongodb'); // Imports the mongoDB library
 
