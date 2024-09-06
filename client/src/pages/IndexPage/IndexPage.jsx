@@ -9,11 +9,11 @@ export default function IndexPage () {
     // const variable array to save the users location
     const [userLocation, setUserLocation] = useState(null);
     // Gets search results if redirected from search screen.
-    const { results } = useLocation();
+    const { results } = useLocation().state || {};
 
     useEffect (() => {
-        if (results) {
-            console.log(results);
+        if (results != null) {
+            setRestaurants(results);
         } else {
             axios.get('/restaurants').then(response => {
                 setRestaurants(response.data);

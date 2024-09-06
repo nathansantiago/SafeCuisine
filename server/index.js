@@ -34,11 +34,16 @@ app.get('/restaurants', async (req,res) => {
 
 // Gets search results
 app.get('/search', async (req, res) => {
-    // Gets entered form data
-    const { location, distance, allergens } = req.body;
-    // find restaraunt by town
-    res.json(await Restaurant.find( {town: location} ));
-})
+    try {
+        // Gets entered form data
+        const { location, distance, allergens } = req.query;
+        // find restaraunt by town
+        res.json(await Restaurant.find( {'address.town': location} ));
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
 
 // Gets all reviews for restaurant
 app.get('/restaurants/reviews/:id', async (req, res) => {

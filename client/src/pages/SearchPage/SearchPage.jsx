@@ -9,14 +9,22 @@ export default function SearchPage () {
     const[redirect, setRedirect] = useState(false);
     const[location, setLocation] = useState(null);
     const[distance, setDistance] = useState(0);
-    const[allergens, setAllergens] = useState([]);
+    const[allergens, setAllergens] = useState(["Gluten", "Vegan"]);
     const [results, setResults] = useState([]);
 
-    async function searchFormSubmit (ev, location, distance, allergens) {
+    async function searchFormSubmit (ev) {
         ev.preventDefault();
         
         try {
-            const restaraunts = await axios.get('/search', {location, distance, allergens});
+            console.log(location, distance, allergens);
+            const restaurants = await axios.get('/search',
+                {params: {location, distance, allergens}
+            });
+            if (restaurants.data.length === 0) {
+                alert('No results found.');
+                return;
+            }
+            setResults(restaurants.data);
             setRedirect(true);
         }
         catch (e) {
@@ -32,18 +40,18 @@ export default function SearchPage () {
         <div id="search-page">
             <div id="search-container">
                 <form onSubmit={searchFormSubmit}>
-                    <label htmlFor="">Location (Zip or City):</label>
-                    <input type="text" name="" id="" onChange={ev => setLocation(ev.target.value)}/>
-                    <label htmlFor="">Distance in miles:</label>
-                    <input type="number" name="" id="" onChange={ev => setDistance(ev.target.value)}/>
-                    <label htmlFor="">Allergens:</label>
+                    <label htmlFor="location">Location (Zip or City):</label>
+                    <input type="text" name="location" id="location" onChange={ev => setLocation(ev.target.value)}/>
+                    <label htmlFor="distance">Distance in miles:</label>
+                    <input type="number" name="distance" id="distance" onChange={ev => setDistance(ev.target.value)}/>
+                    <label htmlFor="allergens">Allergens:</label>
                     <div id="allergens-options">
-                        <input type="checkbox" />
-                        <label htmlFor="">Gluten</label>
-                        <input type="checkbox" />
-                        <label htmlFor="">Vegan</label>
+                        <input type="checkbox" id="gluten" />
+                        <label htmlFor="gluten">Gluten</label>
+                        <input type="checkbox" id="vegan" />
+                        <label htmlFor="vegan">Vegan</label>
                     </div>
-                    <button>
+                    <button type="submit">
                         <ArrowRightMagnifyingGlassIcon/>
                     </button>
                 </form>
