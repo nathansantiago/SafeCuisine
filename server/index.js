@@ -29,8 +29,14 @@ app.get('/restaurants/:id', async (req, res) => {
 
 // Gets all restaurants data
 app.get('/restaurants', async (req,res) => {
-    res.json( await Restaurant.find() );
-})
+    try {
+        res.json( await Restaurant.find() );
+    }
+    catch (error) {
+        console.error('Error fetching restaurants:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
 
 // Gets search results
 app.get('/search', async (req, res) => {

@@ -11,15 +11,17 @@ export default function IndexPage () {
     // Gets search results if redirected from search screen.
     const { results } = useLocation().state || {};
 
-    useEffect (() => {
-        if (results != null) {
+    useEffect(() => {
+        if (results) {
             setRestaurants(results);
         } else {
             axios.get('/restaurants').then(response => {
                 setRestaurants(response.data);
             });
         }
+    }, [results]);
 
+    useEffect (() => {
         // if geolocation is supported by the users browser
         if (navigator.geolocation) {
             // get the current users location

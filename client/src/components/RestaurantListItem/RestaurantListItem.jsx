@@ -13,7 +13,7 @@ export default function RestaurauntListItem ({ restaurantData, locationData }) {
                         <h3>
                             <a href="https://maps.google.com/?q=200 N Greensboro St A-18, Carrboro, NC 27510">{restaurantData.address.building} {restaurantData.address.street}, {restaurantData.address.town}, {restaurantData.address.state} {restaurantData.address.zipcode}</a>
                         </h3>
-                        <h3>{Math.round( // Rounds result to two decimal places
+                        <h3>{ locationData && Math.round( // Rounds result to two decimal places
                                 getDistanceFromLatLonInMi(  // Calls util function to find distance as the crow flies
                                     restaurantData.address.coord[0], restaurantData.address.coord[1],
                                     locationData.latitude, locationData.longitude

@@ -9,14 +9,13 @@ export default function SearchPage () {
     const[redirect, setRedirect] = useState(false);
     const[location, setLocation] = useState(null);
     const[distance, setDistance] = useState(0);
-    const[allergens, setAllergens] = useState(["Gluten", "Vegan"]);
+    const[allergens, setAllergens] = useState(["Gluten", "Vegan"]);  //TODO: Implement allergens
     const [results, setResults] = useState([]);
 
     async function searchFormSubmit (ev) {
         ev.preventDefault();
         
         try {
-            console.log(location, distance, allergens);
             const restaurants = await axios.get('/search',
                 {params: {location, distance, allergens}
             });
