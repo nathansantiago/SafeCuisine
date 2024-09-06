@@ -9,7 +9,7 @@ export default function SearchPage () {
     const[redirect, setRedirect] = useState(false);
     const[location, setLocation] = useState(null);
     const[distance, setDistance] = useState(10);
-    const[allergens, setAllergens] = useState(["Gluten", "Vegan"]);  //TODO: Implement allergens
+    const[allergens, setAllergens] = useState([]);  //TODO: Implement allergens
     const [results, setResults] = useState([]);
 
     async function searchFormSubmit (ev) {

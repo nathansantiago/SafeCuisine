@@ -43,12 +43,16 @@ app.get('/search', async (req, res) => {
     try {
         // Gets entered form data
         const { location, distance, allergens } = req.query;
+
         // find restaraunt by town
         if ( isNaN(parseInt(location)) ) {
             res.json(await Restaurant.find( {'address.town': location} ));
-        } else {
+        } 
+        // find restaraunt by zipcode
+        else {
             res.json(await Restaurant.find( {'address.zipcode': location} ));
         }
+
     } catch (error) {
         console.log(error);
         res.status(500).send('Internal Server Error');
