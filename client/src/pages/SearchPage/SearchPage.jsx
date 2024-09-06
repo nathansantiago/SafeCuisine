@@ -8,13 +8,13 @@ import { Navigate } from "react-router-dom";
 export default function SearchPage () {
     const[redirect, setRedirect] = useState(false);
     const[location, setLocation] = useState(null);
-    const[distance, setDistance] = useState(0);
+    const[distance, setDistance] = useState(10);
     const[allergens, setAllergens] = useState(["Gluten", "Vegan"]);  //TODO: Implement allergens
     const [results, setResults] = useState([]);
 
     async function searchFormSubmit (ev) {
         ev.preventDefault();
-        
+
         try {
             const restaurants = await axios.get('/search',
                 {params: {location, distance, allergens}
@@ -42,7 +42,7 @@ export default function SearchPage () {
                     <label htmlFor="location">Location (Zip or City):</label>
                     <input type="text" name="location" id="location" onChange={ev => setLocation(ev.target.value)}/>
                     <label htmlFor="distance">Distance in miles:</label>
-                    <input type="number" name="distance" id="distance" onChange={ev => setDistance(ev.target.value)}/>
+                    <input type="number" name="distance" id="distance" onChange={ev => setDistance(ev.target.value)} placeholder={ distance }/>
                     <label htmlFor="allergens">Allergens:</label>
                     <div id="allergens-options">
                         <input type="checkbox" id="gluten" />
