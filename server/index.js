@@ -44,9 +44,12 @@ app.get('/search', async (req, res) => {
         // Gets entered form data
         const { location, distance, allergens } = req.query;
 
+        console.log(location, distance, allergens);  // Logs variables
+
         // find restaraunt by town
         if ( isNaN(parseInt(location)) ) {
-            res.json(await Restaurant.find( {'address.town': location} ));
+            const restaurants = await Restaurant.find( {'address.town': location} );
+            res.json(restaurants);
         } 
         // find restaraunt by zipcode
         else {

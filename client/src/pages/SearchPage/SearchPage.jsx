@@ -9,8 +9,19 @@ export default function SearchPage () {
     const[redirect, setRedirect] = useState(false);
     const[location, setLocation] = useState(null);
     const[distance, setDistance] = useState(10);
-    const[allergens, setAllergens] = useState([]);  //TODO: Implement allergens
+    const[allergens, setAllergens] = useState([]);
     const [results, setResults] = useState([]);
+
+    // Get allergens
+    function checkboxClick (ev) {
+        if (ev.target.checked) {
+            setAllergens([...allergens, ev.target.id]);
+        }
+        else {
+            setAllergens(allergens.filter(a => a !== ev.target.id));
+        }
+        console.log(allergens);
+    }
 
     async function searchFormSubmit (ev) {
         ev.preventDefault();
@@ -45,9 +56,9 @@ export default function SearchPage () {
                     <input type="number" name="distance" id="distance" onChange={ev => setDistance(ev.target.value)} placeholder={ distance }/>
                     <label htmlFor="allergens">Allergens:</label>
                     <div id="allergens-options">
-                        <input type="checkbox" id="gluten" />
+                        <input type="checkbox" id="gluten" onChange={checkboxClick} checked={allergens.includes("gluten")}/>
                         <label htmlFor="gluten">Gluten</label>
-                        <input type="checkbox" id="vegan" />
+                        <input type="checkbox" id="vegan" onChange={checkboxClick} checked={allergens.includes("vegan")}/>
                         <label htmlFor="vegan">Vegan</label>
                     </div>
                     <button type="submit">
